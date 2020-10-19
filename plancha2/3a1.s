@@ -1,5 +1,5 @@
 .global main
 main:
-    mov $0x1f, %rax
-    shl $1, %rax
+    mov $1, %rax
+    shl $0x1f, %rax
     retq
