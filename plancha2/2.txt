@@ -1,0 +1,6 @@
+Para obtener el código de salida de un programa podemos correr el comando 
+"echo $?" en la terminal una vez ejecutado de mi programa. 
+Otra manera de conocer el valor de retorno es consutar el valor del registro 
+eax, lo cual se puede hacer facilmente ejecutando el programa con gdb e 
+imprimiendo eax luego de correr la última línea del programa. Una forma 
+de hacerlo es con el comando "info reg eax".
