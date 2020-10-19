@@ -5,5 +5,5 @@ main:
     movl $1, %ebx
     shll $0x1f, %eax
     shll $0x0f, %ebx
-    orl %rax, %ebx
+    orl %ebx, %eax
     ret
