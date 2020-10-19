@@ -4,7 +4,7 @@ main:
                   # la parte alta del registro.
     movl $2, %ecx
     imull %ecx
-    #completar para que el resultado correcto como signed quede en rax
+    #completar para que el resultado correcto como signed quede en rax 
     
 
     xorq %rax, %rax
