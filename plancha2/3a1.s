@@ -1,5 +1,6 @@
 .global main
 main:
-    mov $1, %rax
-    shl $0x1f, %rax
-    retq
+    # 1 << 31
+    movl $1, %eax
+    shll $0x1f, %eax
+    ret

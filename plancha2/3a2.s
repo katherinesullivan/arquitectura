@@ -1,8 +1,9 @@
 .global main
 main:
-    mov $0x1f, %rax
-    mov $0x0f, %rbx
-    shl $1, %rax
-    shl $1, %rbx
-    orq %rax, %rbx
-    retq
+    # (1 << 31) | (1 << 15)
+    movl $1, %eax
+    movl $1, %ebx
+    shll $0x1f, %eax
+    shll $0x0f, %ebx
+    orl %rax, %ebx
+    ret
