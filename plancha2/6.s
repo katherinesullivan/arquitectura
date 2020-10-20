@@ -14,28 +14,41 @@ main:
     # apartado a
     movq %rsp, %rsi
     xorq %rax, %rax
+    call printf
 
     # apartado b
     movq ($format), %rsi
     xorq %rax, %rax
+    call printf
 
     # apartado c
     movq $format2, %rdi
     movq ($format), %rsi
     xorq %rax, %rax
+    call printf
 
+    # apartado d
+    movq $format, %rdi
+    movq %rsp, %rsi
+    xorq %rax, %rax
+    call printf
+
+    # apartado e
+    movq (%rsp), %rbx
+    addq $8, %rbx
+    movq %rbx, %rsi
+    xorq %rax, %rax
+    call printf
+
+    # apartado f
+    movq $i, %rsi
+    xorq %rax, %rax
+    call printf
+
+    # apartado g
+    movq ($i), %rsi
+    xorq %rax, %rax
+    call printf
 
 
     ret
-
-
-
-
-
-#a) El valor del registro rsp.
-#b) La direcci ́on de la cadena de formato.
-#c) La direcci ́on de la cadena de formato en hexadecimal. 
-#d) El quad en el tope de la pila.
-#e) El quad ubicado en la direcci ́on rsp + 8. 
-#f) El valor i.
-#g) La direcci ́on de i.
