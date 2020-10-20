@@ -5,6 +5,7 @@ i: .quad 0xDEADBEEF
 
     .text 
     .global main
+# FALTA VER QUE B Y C ESTEN BIEN (COINCIDEN // SI) Y COMO HACER LO DE +8 EN E
 main:
     movq $format, %rdi  # El primer argumento es el formato. 
     movq $1234, %rsi  # El valor a imprimir.
@@ -12,11 +13,13 @@ main:
     call printf
 
     # apartado a
+    movq $format, %rdi
     movq %rsp, %rsi
     xorq %rax, %rax
     call printf
 
     # apartado b
+    movq $format, %rdi
     movq $format, %rsi
     xorq %rax, %rax
     call printf
@@ -34,16 +37,19 @@ main:
     call printf
 
     # apartado e
-    movq 8(%rsp), %rsi
+    movq $format, %rdi
+    movq 8( ,%rsp,1), %rsi
     xorq %rax, %rax
     call printf
 
     # apartado f
+    movq $format, %rdi
     movq i, %rsi
     xorq %rax, %rax
     call printf
 
     # apartado g
+    movq $format, %rdi
     movq $i, %rsi
     xorq %rax, %rax
     call printf
