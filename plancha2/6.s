@@ -17,13 +17,13 @@ main:
     call printf
 
     # apartado b
-    movq ($format), %rsi
+    movq $format, %rsi
     xorq %rax, %rax
     call printf
 
     # apartado c
     movq $format2, %rdi
-    movq ($format), %rsi
+    movq $format, %rsi
     xorq %rax, %rax
     call printf
 
@@ -34,19 +34,17 @@ main:
     call printf
 
     # apartado e
-    movq (%rsp), %rbx
-    addq $8, %rbx
-    movq %rbx, %rsi
+    movq 8(%rsp), %rsi
     xorq %rax, %rax
     call printf
 
     # apartado f
-    movq $i, %rsi
+    movq i, %rsi
     xorq %rax, %rax
     call printf
 
     # apartado g
-    movq ($i), %rsi
+    movq $i, %rsi
     xorq %rax, %rax
     call printf
 
