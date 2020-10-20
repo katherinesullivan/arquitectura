@@ -1,7 +1,10 @@
 .data
 format: .asciz "%ld\n"
+format2: .asciz "%lx\n"
 i: .quad 0xDEADBEEF
-.text .global main
+
+.text 
+.global main
 main:
     movq $format, %rdi  # El primer argumento es el formato. 
     movq $1234, %rsi  # El valor a imprimir.
@@ -9,7 +12,18 @@ main:
     call printf
 
     # apartado a
-    
+    movq %rsp, %rsi
+    xorq %rax, %rax
+
+    # apartado b
+    movq ($format), %rsi
+    xorq %rax, %rax
+
+    # apartado c
+    movq $format2, %rdi
+    movq ($format), %rsi
+    xorq %rax, %rax
+
 
 
     ret
