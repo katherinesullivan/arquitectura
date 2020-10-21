@@ -32,13 +32,13 @@ main:
 
     # apartado d
     movq $formato, %rdi
-    movq %rsp, %rsi
+    movq (%rsp), %rsi
     xorq %rax, %rax
     call printf
 
     # apartado e
     movq $formato, %rdi
-    leaq 8(%rsp), %rsi
+    movq 8(%rsp), %rsi
     xorq %rax, %rax
     call printf
 
