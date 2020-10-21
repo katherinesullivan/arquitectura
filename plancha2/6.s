@@ -1,11 +1,10 @@
     .data
 formato: .asciz "%ld\n"
-format2: .asciz "%lx\n"
+formato2: .asciz "%lx\n"
 i: .quad 0xDEADBEEF
 
     .text 
     .global main
-# FALTA VER QUE B Y C ESTEN BIEN (COINCIDEN // SI) Y COMO HACER LO DE +8 EN E
 main:
     movq $formato, %rdi  # El primer argumento es el formato. 
     movq $1234, %rsi  # El valor a imprimir.
@@ -25,7 +24,7 @@ main:
     call printf
 
     # apartado c
-    movq $format2, %rdi
+    movq $formato2, %rdi
     movq $formato, %rsi
     xorq %rax, %rax
     call printf
