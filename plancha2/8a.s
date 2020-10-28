@@ -1,18 +1,19 @@
     .data
-cadena: .asciz "123456"
+cadena: .asciz "123456."
     .text
     .global main
 main:
     movq $cadena, %rdi
-    movb $'6', %sil
+    movb $'a', %sil
     
     .global busca
 busca:
-    cmpb $'\0', (%rdi)
+    cmpb '.', (%rdi)
     jz noencontrado
     cmpb %sil, (%rdi)
     jz encontrado
-    addq $8, %rdi
+    incq %rdi
+    jmp busca
 
 noencontrado:
     movq $-1, %rax
