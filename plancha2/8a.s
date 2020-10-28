@@ -4,15 +4,19 @@ cadena: .asciz "123456"
     .global main
 main:
     movq $cadena, %rdi
-    movb $’6’, %sil
+    movb $'6', %sil
     
     .global busca
 busca:
     cmpb $'\0', (%rdi)
-    jz retorno
+    jz noencontrado
     cmpb %sil, (%rdi)
     jz encontrado
     addq $8, %rdi
+
+noencontrado:
+    movq $-1, %rax
+    jmp retorno
 
 encontrado:
     movq %rdi, %rax
