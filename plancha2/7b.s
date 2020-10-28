@@ -4,19 +4,17 @@ main:
     movq $0, %rcx
     movq $64, %rbx
 
-condicion:
+while:
     decq %rbx
-    jnz while
     jz retorno
 
-while: 
     rol $1, %rax
     jc suma
-    jmp condicion
+    jmp while
 
 suma:
     addq %rcx
-    jmp comdicion
+    jmp while
 
 retorno:
     ret
