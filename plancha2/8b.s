@@ -9,15 +9,17 @@ main:
     movl $3, %edx  #debe ser la longitud de cadena corta
 
     xorq %rax, %rax
-    incq %edx
+    incl %edx
 
     .global compara 
 compara:
     #retorna 1 si las cadenas son iguales en los primeros %edx caracteres
     #retorna 0 si son distintas
     decl %edx
-    jnz soniguales
-    cmpb %rdi, %rsi
+    jz soniguales
+    movq (%rdi), %rcx
+    movq (%rsi), %rbx
+    cmpb %rcx, (%rbx)
     jnz retorno
     incq %rdi
     incq %rsi
