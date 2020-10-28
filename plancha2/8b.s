@@ -1,6 +1,6 @@
     .data
 cadenalarga: .asciz "123456"
-cadenacorta: .asciz "123" #=>1 , 124=>0, 456=>0
+cadenacorta: .asciz "123"
     .text
     .global main 
 main:
@@ -18,7 +18,6 @@ compara:
     decl %edx
     jz soniguales
     movb (%rdi), %cl
-    #movb (%rsi), %bl
     cmpb %cl, (%rsi)
     jnz retorno
     incq %rdi
