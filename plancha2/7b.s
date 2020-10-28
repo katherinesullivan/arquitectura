@@ -1,6 +1,7 @@
     .text
     .global main
 main:
+    movq $0xAA, %rax
     movq $0, %rcx
     movq $65, %rbx
 
@@ -8,7 +9,7 @@ while:
     decq %rbx
     jz retorno
 
-    rcrq $1, %rax
+    rorq $1, %rax
     adcq $0, %rcx
     jmp while
 
