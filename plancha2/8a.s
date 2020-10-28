@@ -1,3 +1,5 @@
+# Utilizamos como caracter terminador de la cadena al punto
+# No pudimos encontrar una manera de hacer uso del \0.
     .data
 cadena: .asciz "123456."
     .text
@@ -8,7 +10,7 @@ main:
     
     .global busca
 busca:
-    cmpb '.', (%rdi)
+    cmpb $'.', (%rdi)
     jz noencontrado
     cmpb %sil, (%rdi)
     jz encontrado
