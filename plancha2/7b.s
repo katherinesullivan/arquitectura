@@ -1,7 +1,6 @@
     .text
     .global main
 main:
-    movq $0xAA, %rax
     movq $0, %rcx
     movq $65, %rbx
 
@@ -18,5 +17,5 @@ retorno:
     # El retorno es cuantos bits en 1 tiene el entero de 64 bits
     # que estaba almacenado en el registro rax.
     # Comentando esta línea ese valor quedaría en rcx y no perdemos el
-    # entero que había en rax
+    # entero que había en rax.
     ret
