@@ -17,9 +17,9 @@ compara:
     #retorna 0 si son distintas
     decl %edx
     jz soniguales
-    movq (%rdi), %rcx
-    movq (%rsi), %rbx
-    cmpb %rcx, (%rbx)
+    movb (%rdi), %cl
+    #movb (%rsi), %bl
+    cmpb %cl, (%rsi)
     jnz retorno
     incq %rdi
     incq %rsi
