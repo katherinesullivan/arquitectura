@@ -13,7 +13,7 @@ while:
     jmp while
 
 suma:
-    addq %rcx
+    incq %rcx
     jmp while
 
 retorno:
