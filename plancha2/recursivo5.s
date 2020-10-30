@@ -10,12 +10,15 @@ x: .long 6
     .text
     .global fact
 fact:
-    
-
-
-
+    decq %rcx
+    jle sigue
+    imul %rcx, %rax
+    jmp fact
 
     .global main
 main:
     movq x, %rcx
-    movq
+    movq $1, %rax
+    jmp fact
+sigue:
+    ret  
