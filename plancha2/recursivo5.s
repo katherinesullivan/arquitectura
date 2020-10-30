@@ -11,11 +11,9 @@ x: .long 6
     .global main
 main:
     movq x, %rdi
-    movq $1, %rax
+    movq $1, %rcx
     push $0
-    jmp fact
 
-    .global fact
 fact:
     cmpq $1, %rdi 
     jle retornofact
@@ -26,9 +24,9 @@ fact:
 retornofact:
     popq %rdi
     jz retorno
-    imul %rdi, %rax
+    imul %rdi, %rcx
     jmp retornofact
 
-
 retorno:
+    movq %rcx, %rax
     ret  
