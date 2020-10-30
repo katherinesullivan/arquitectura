@@ -1,7 +1,9 @@
     .data
 fmt: .string "%d"
 entero: .long -100 
-funcs: .quad f1 .quad f2 .quad f3
+funcs: .quad f1 
+       .quad f2 
+       .quad f3
 
     .text
 f1:     
@@ -33,8 +35,9 @@ main:
 
     xorq %rax, %rax
 
-    popq %rcx
-    leaq (f1, %rcx, 8), %rdx
+    movq entero, %rcx
+    imul $19, %rcx
+    leaq (%rsi, %rcx, 1), %rdx
 
     jmp *%rdx
 
