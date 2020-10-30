@@ -35,9 +35,10 @@ main:
 
     xorq %rax, %rax
 
+    movq f1, %rsi
     movq entero, %rcx
-    imul $19, %rcx
-    leaq (%rsi, %rcx, 1), %rdx
+    imul $9, %rcx
+    leaq 400537(%rcx, %rcx, 2), %rdx
 
     jmp *%rdx
 
