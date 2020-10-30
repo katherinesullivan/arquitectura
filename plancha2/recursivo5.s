@@ -10,15 +10,24 @@ x: .long 6
     .text
     .global fact
 fact:
-    decq %rcx
-    jle sigue
-    imul %rcx, %rax
+    decq %rdi
+    jle retornofact
+    pushq %rdi
     jmp fact
+
+retornofact:
+    popq %rdi
+    jz retorno
+    imul %rdi, %rax
+    jmp retornofact
 
     .global main
 main:
-    movq x, %rcx
+    movq x, %rdi
+    incq %rdi
     movq $1, %rax
+    push $0
     jmp fact
-sigue:
+
+retorno:
     ret  
