@@ -35,8 +35,16 @@ main:
 
     xorq %rax, %rax
 
-    movq entero, %rcx
-    movq f1(, %rcx, 8), %rdx
+    #movq f1, %rcx
+    #movl entero, %eax
+    #movq (%rcx, %rsi, 1), %rdx
+    #addq f1, %rax
+    #imul $19, %rax
+    #addq $f1, %rax
+    #movq %rax, %rdx
+    movq $f1, %rax
+    movq (%rax,entero,1), %rax
+    movq %rax, %rdx
 
     jmp *%rdx
 
