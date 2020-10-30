@@ -7,7 +7,7 @@
 # }
 
     .data
-x: .long 6
+x: .long 0
 
     .text
     .global main

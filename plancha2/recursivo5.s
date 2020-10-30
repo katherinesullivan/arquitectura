@@ -8,11 +8,19 @@
 x: .long 6
 
     .text
+    .global main
+main:
+    movq x, %rdi
+    movq $1, %rax
+    push $0
+    jmp fact
+
     .global fact
 fact:
-    decq %rdi
+    cmpq $1, %rdi 
     jle retornofact
     pushq %rdi
+    decq %rdi
     jmp fact
 
 retornofact:
@@ -21,13 +29,6 @@ retornofact:
     imul %rdi, %rax
     jmp retornofact
 
-    .global main
-main:
-    movq x, %rdi
-    incq %rdi
-    movq $1, %rax
-    push $0
-    jmp fact
 
 retorno:
     ret  
