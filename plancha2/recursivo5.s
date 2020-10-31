@@ -5,7 +5,7 @@
 # }
 
     .data
-x: .long 6
+x: .quad 6
 
     .text
     .global main

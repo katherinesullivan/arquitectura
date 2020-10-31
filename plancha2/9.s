@@ -35,16 +35,15 @@ main:
 
     xorq %rax, %rax
 
-    #movq f1, %rcx
-    #movl entero, %eax
-    #movq (%rcx, %rsi, 1), %rdx
-    #addq f1, %rax
-    #imul $19, %rax
-    #addq $f1, %rax
-    #movq %rax, %rdx
-    movq $f1, %rax
-    movq (%rax,entero,1), %rax
-    movq %rax, %rdx
+    # COMPLETE CON DOS INSTRUCCIONES.
+    # Entendemos que la manera más eficiente de realizarlo es usando direccionamiento relativo, 
+    # sin embargo, no pudimos encontrar una manera que nos funcione siendo que la diferencia 
+    # de memoria entre las funciones f1 y f2 y entre f2 y f3 es de 19 bytes y el valor de la
+    # escala está limitada a 1, 2, 4 u 8.
+
+    movq entero, %rdx
+    imul $19, %rdx
+    addq $f1, %rdx
 
     jmp *%rdx
 
