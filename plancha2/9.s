@@ -41,7 +41,7 @@ main:
     # de memoria entre las funciones f1 y f2 y entre f2 y f3 es de 19 bytes y el valor de la
     # escala está limitada a 1, 2, 4 u 8.
 
-    movq entero, %rdx
+    movl entero, %edx
     imul $19, %rdx
     addq $f1, %rdx
 

@@ -1,0 +1,2 @@
+La dirección de memoria donde queda almacenada la dirección de 
+retorno de f es (%rbp)+8.
