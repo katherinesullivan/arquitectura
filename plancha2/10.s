@@ -15,17 +15,17 @@ longjmp2:
     movq valor, %rdx
     jmp *%rcx
 
-first:
-    jmp second
+primero:
+    jmp segundo
     # Estas instrucciones nunca se llegan a ejecutar
     movq $formato, %rdi
-    movq first, %rsi
+    movq primero, %rsi
     xorq %rax, %rax
     call printf
     
-second:
+segundo:
     movq $formato, %rdi
-    movq second, %rsi
+    movq segundo, %rsi
     xorq %rax, %rax
     call printf   # Esto si se imprime
     jmp longjmp2
@@ -38,7 +38,7 @@ main:
 setjmp:
     push setjmp
     call setjmp2
-    cmpq $0, $rax
-    jz first
+    cmpq $0, %rax
+    jz primero
     
     ret    
