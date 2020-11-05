@@ -46,8 +46,8 @@ main:
     # addq $f1, %rdx
 
     # SOLUCION CORRECTA
-    movl entero %edx
-    movq funcs(, %edx, 8), %rdx
+    movl entero, %ebx
+    movq funcs(, %rbx, 8), %rdx
 
 
     jmp *%rdx
