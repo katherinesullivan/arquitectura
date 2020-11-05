@@ -7,7 +7,7 @@ second: .quad 0x2
 
     .text
 setjmp2:
-    popq %rcx  # rcx es el buffer
+    movq 8(%rbp), %rcx  # rcx es el buffer
     movq %rdx, %rax
 
 
@@ -34,11 +34,19 @@ second:
 
     .global main
 main:
+    # Prologo
+    pushq %rbp
+    movq  %rsp, %rbp
+    
     xorq %rdx, %rdx  # rdx es value
 setjmp:
     push setjmp
     call setjmp2
+    addq $8, (%rbp)
     cmpq $0, $rax
     jz first
     
+    # Epilogo
+    movq %rbp, %rsp
+    popq %rbp
     ret    
