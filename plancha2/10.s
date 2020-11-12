@@ -2,8 +2,8 @@
 buffer: .quad 0, 0, 0, 0, 0, 0, 0, 0
 valor: .long 10
 formato: .asciz "%ld\n"
-first: .quad 0x1
-second: .quad 0x2
+firsto: .quad 0x1
+secondo: .quad 0x2
 
 
     .text
@@ -15,15 +15,18 @@ setjmp2:
     movq %r13, buffer+4
     movq %r14, buffer+5
     movq %r15, buffer+6
-    movq (%rsp), buffer+7
+    movq (%rsp), %rdx
+    movq %rdx, buffer+7
     xor %rdx, %rdx
     movq %rdx, %rax
+    jmp continuacionmain
+
 
 retornosjdelj:
     cmpq $0, %rdx
     jz rdxmas1
     movq %rdx, %rax
-    jmp *56(buffer)
+    jmp *buffer+7
 
 rdxmas1:
     incq %rdx
@@ -37,24 +40,28 @@ primero:
     jmp segundo
     # Estas instrucciones nunca se llegan a ejecutar
     movq $formato, %rdi
-    movq primero, %rsi
+    movq firsto, %rsi
     xorq %rax, %rax
     call printf
     
 segundo:
     movq $formato, %rdi
-    movq segundo, %rsi
+    movq secondo, %rsi
     xorq %rax, %rax
     call printf   # Esto si se imprime
+    movq $7, %rbx
     jmp longjmp2
 
 
 
     .global main
 main:
-    call setjmp2
+    movq $8, %rbx
+    jmp setjmp2
+continuacionmain:
     cmpq $0, %rax
     jz primero
+    movq buffer, %rbx
     ret
 
 
