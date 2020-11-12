@@ -33,10 +33,8 @@ retornosjdelj:
     movq buffer+4, %r13
     movq buffer+5, %r14
     movq buffer+6, %r15
-    movq buffer+7, %rdx
-    movq %rdx, (%rsp)
-    addq $8, %rsp
-    jmp *%rsp
+    #addq $8, %rsp
+    jmp *buffer+7
 
 rdxmas1:
     incq %rdx
