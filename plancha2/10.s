@@ -26,7 +26,17 @@ retornosjdelj:
     cmpq $0, %rdx
     jz rdxmas1
     movq %rdx, %rax
-    jmp *buffer+7
+    movq buffer, %rbx
+    movq buffer+1, %rbp
+    movq buffer+2, %rsp
+    movq buffer+3, %r12
+    movq buffer+4, %r13
+    movq buffer+5, %r14
+    movq buffer+6, %r15
+    movq buffer+7, %rdx
+    movq %rdx, (%rsp)
+    addq $8, %rsp
+    jmp *%rsp
 
 rdxmas1:
     incq %rdx
@@ -49,19 +59,16 @@ segundo:
     movq secondo, %rsi
     xorq %rax, %rax
     call printf   # Esto si se imprime
-    movq $7, %rbx
     jmp longjmp2
 
 
 
     .global main
 main:
-    movq $8, %rbx
-    jmp setjmp2
+    call setjmp2
 continuacionmain:
     cmpq $0, %rax
     jz primero
-    movq buffer, %rbx
     ret
 
 
