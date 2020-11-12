@@ -21,6 +21,7 @@ iteracion:
     jz retorno
     imul %rcx, %rax
     jmp iteracion
+    # se podria usar loop
 
 
 retorno: 
