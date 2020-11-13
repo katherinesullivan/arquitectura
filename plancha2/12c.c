@@ -3,6 +3,7 @@
 
 task t1, t2, t3, taskmain;
 
+
 void ft1(){
 	double d;
     printf("direccion d: %p\n", &d);
@@ -31,6 +32,7 @@ void ft3() {
     TRANSFER(t3, taskmain);
 }
 
+
 int main(){
 	stack(t1,ft1);
 	stack(t2,ft2);
@@ -50,5 +52,5 @@ direccion i: 0x7ffee3994a4c
 Podemos ver que la diferencia entre las direcciones de las variables locales de las corrutinas es de 4096 bytes 
 (diferencia pedida por la función hace_stack), con la salvedad de que la diferencia entre la dirección de d con 
 la dirección de j es de 4100 bytes. Intuimos que esta diferencia tiene 4 bytes más que los 4096 realmente pedidos 
-
+porque la variable d definida en ft1 es un double y ocupa 4 bytes más que el resto de las variables. 
 */
