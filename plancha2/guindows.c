@@ -6,7 +6,7 @@
 
 static void hace_stack(jmp_buf buf, void (*pf)(), unsigned prof, char *dummy) {
 	if( dummy - (char *) &prof >= prof) {
-		if (setjmp(buf)!=0) {
+		if (setjmp(buf) != 0) { // En que caso setjmp(buf) sería distinto de 0 y porque llamaría a pf en ese caso?
 			pf(); abort();
 		}
 	} else hace_stack(buf, pf, prof, dummy);
@@ -15,6 +15,6 @@ static void hace_stack(jmp_buf buf, void (*pf)(), unsigned prof, char *dummy) {
 void stack(jmp_buf buf, void (*pf)()) {
 	static int ctas = NPILAS;
 	char dummy;
-	hace_stack(buf, pf, TPILA *ctas, &dummy);
+	hace_stack(buf, pf, TPILA * ctas, &dummy);
 	ctas--;
 }
