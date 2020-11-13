@@ -28,12 +28,12 @@ retornosjdelj:
     movq %rdx, %rax
     movq buffer, %rbx
     movq buffer+1, %rbp
-    movq buffer+2, %rsp
+    #movq buffer+2, %rsp
     movq buffer+3, %r12
     movq buffer+4, %r13
     movq buffer+5, %r14
     movq buffer+6, %r15
-    #addq $8, %rsp
+    addq $8, %rsp
     jmp *buffer+7
 
 rdxmas1:
@@ -68,34 +68,4 @@ continuacionmain:
     cmpq $0, %rax
     jz primero
     ret
-
-
-
-
-
-
-
-
-
-
-
-
-    # Prologo
-    #pushq %rbp
-    #movq  %rsp, %rbp
-    
-    
-    #xorq %rdx, %rdx  # rdx es value
-#setjmp:
-#    push setjmp
-#    call setjmp2
-    
- #   addq $8, (%rbp)
-  #  cmpq $0, %rax
-   # jz primero
-    
-
-    # Epilogo
-    #movq %rbp, %rsp
-    #popq %rbp
-    #ret    
+  
