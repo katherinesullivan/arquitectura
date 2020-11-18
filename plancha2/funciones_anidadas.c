@@ -3,7 +3,7 @@
 int p1() {
     int a = 5;
     int p2() {
-        int b = a+1;
+        int b = a + 1;
         int p3() {
             int c = a * b;
             return c;
