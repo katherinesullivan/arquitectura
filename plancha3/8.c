@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 void sum_simd(float *, float *, int);
 
