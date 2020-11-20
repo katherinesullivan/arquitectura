@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 void sum_simd(float *, float *, int);
 
@@ -11,6 +12,7 @@ int main() {
         a[i] = i + (i/10);
         b[i] = i - (i/10);
     }
+    len++;
 
     clock_t begin, end;
     begin = clock();
@@ -18,7 +20,7 @@ int main() {
     end = clock();
     float tiempoEjecucion = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len-1; i++) {
         printf("%f ", a[i]);
     }
     puts("");

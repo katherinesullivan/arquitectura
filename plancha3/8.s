@@ -22,7 +22,7 @@ sum_simd:
     # notar que en este caso los argumentos
     # son punteros y vienen en rdi y rsi respectivamente
     cmpq $4, %rdx
-    jle sum
+    jge sum
 
     # copia 4 floats de "a" a xmm0
     movaps (%rdi), %xmm0
@@ -49,10 +49,10 @@ sum:
     movss (%rsi), %xmm1
     addss %xmm0, %xmm1
 
+    #incq %rcx
+    movss %xmm1, (%rdi)
     addq $4, %rdi
     addq $4, %rsi
-    #incq %rcx
-    movss %xmm1, (%rdi, %rcx, 4)
     jmp sum
 
 
