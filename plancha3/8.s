@@ -1,9 +1,7 @@
-    .data
-a: .float 0, 1, 2, 3
-b: .float 4, 5, 6, 7
-len: .quad 4
-i: .long 0 # creo que para los contadores habria que usar registros
-j: .long 0
+#    .data
+#a: .float 0, 1, 2, 3
+#b: .float 4, 5, 6, 7
+#len: .quad 4
     
     .text
     #.global main
@@ -16,7 +14,7 @@ j: .long 0
 #    call sum_simd
 #    ret
 
-    
+
     .global sum_simd
 sum_simd:
     # notar que en este caso los argumentos
@@ -37,7 +35,6 @@ sum_simd:
     addq $16, %rsi
     #addq $16, %rcx
     subq $4, %rdx
-    # jz retorno
     jmp sum_simd
 
 
@@ -45,7 +42,7 @@ sum:
     decq %rdx
     jz retorno
 
-    movss (%rdi), %xmm0 # esta en el apunte3 (con funciones packed) pero o sea deberia funcar y no lo hace
+    movss (%rdi), %xmm0
     movss (%rsi), %xmm1
     addss %xmm0, %xmm1
 

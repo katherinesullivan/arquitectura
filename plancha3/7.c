@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-void sum_simd(float *, float *, int);
+void sum(float *, float *, int);
 
 int main() {
     int len = 4;
@@ -16,7 +16,7 @@ int main() {
 
     clock_t begin, end;
     begin = clock();
-    sum_simd(a, b, len);
+    sum(a, b, len);
     end = clock();
     float tiempoEjecucion = (float) (end - begin) / CLOCKS_PER_SEC;
 
@@ -24,6 +24,6 @@ int main() {
         printf("%f ", a[i]);
     }
     puts("");
-    printf("instrucciones packed: %f segundos.\n", tiempoEjecucion);
+    printf("instrucciones escalares: %f segundos.\n", tiempoEjecucion);
     return 0;
 }
