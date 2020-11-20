@@ -6,7 +6,6 @@ c: .float 20
 d: .float 0
 e: .float 2
 f: .float 4
-cero: .float 0
 var1: .float 1.00000
 var2: .float 1.00000
 formato: .asciz "%f\n"
@@ -16,9 +15,9 @@ formato: .asciz "%f\n"
 # xmm0 = a, xmm1 = b, xmm2 = c, xmm3 = d, xmm4 = e, xmm5 = f
 
 a0:
-    ucomisd %xmm6, %xmm3
+    ucomiss %xmm6, %xmm3
     jz incompoinf # si tanto a como d son ceros tenemos una columna nula y el rango de la matriz es < 2
-    ucomisd %xmm6, %xmm1 # si b=0 tendremos infintas sol (c=0) o ninguna (c!=0)
+    ucomiss %xmm6, %xmm1 # si b=0 tendremos infintas sol (c=0) o ninguna (c!=0)
     jz incompoinf
     divss %xmm1, %xmm2 # en %xmm2 queda el valor de y
     movss %xmm2, var2 # se carga el contenido de %xmm2 en la dir de memoria de var2
@@ -36,7 +35,8 @@ main:
     movss d, %xmm3
     movss e, %xmm4
     movss f, %xmm5
-    movss cero, %xmm6
+    movq $0, %rax
+    cvtsi2ssq %rax, %xmm6
     #movq $var1, %rdi
     #movq $var2, %rsi
     call eliminacionprogresiva
@@ -52,12 +52,12 @@ incompoinf:
 
 
 eliminacionprogresiva:
-    ucomisd %xmm6, %xmm0 # vemos que a no sea cero
+    ucomiss %xmm6, %xmm0 # vemos que a no sea cero
     jz a0
     divss %xmm0, %xmm3
     subss %xmm3, %xmm4
     subss %xmm3, %xmm5
-    ucomisd %xmm6, %xmm5 # si f-(d/a) = 0 entonces el sistema tendrá infintas sol o ninguna
+    ucomiss %xmm6, %xmm5 # si f-(d/a) = 0 entonces el sistema tendrá infintas sol o ninguna
     jz incompoinf
     divss %xmm4, %xmm5 # en xmm5 queda el valor de y
     movss %xmm5, var2 # se carga el contenido de xmm5 en la dir de memoria de var2
