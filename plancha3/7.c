@@ -5,7 +5,7 @@
 void sum(float *, float *, int);
 
 int main() {
-    int len = 4;
+    int len = 100000000;
     float *a = malloc(sizeof(float) * len);
     float *b = malloc(sizeof(float) * len);
     for (int i = 0; i < len; i++) {
@@ -21,7 +21,7 @@ int main() {
     float tiempoEjecucion = (float) (end - begin) / CLOCKS_PER_SEC;
 
     for (int i = 0; i < len-1; i++) {
-        printf("%f ", a[i]);
+        //printf("%f ", a[i]);
     }
     puts("");
     printf("instrucciones escalares: %f segundos.\n", tiempoEjecucion);
