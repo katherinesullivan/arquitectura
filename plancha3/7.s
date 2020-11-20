@@ -1,6 +1,6 @@
     .data
-a: .float 0, 1, 2, 3
-b: .float 4, 5, 6, 7
+a: .float 0.1, 1.20, 0.90, 3.70
+b: .float 4.56, 5.10, 6.10, 7.30
 len: .long 4
     
     .text
@@ -21,10 +21,8 @@ sum:
     # en rdx tenemos a su longitud len
     decq %rdx
     jz retorno
-    # algo corte direccionamiento relativo para ir accediendo
-    # a todos los elementos del array porque creo que esto solo accederia al primero 
-
-    movss (%rdi, %rcx, 4), %xmm0 # esta en el apunte3 (con funciones packed) pero o sea deberia funcar y no lo hace
+    
+    movss (%rdi, %rcx, 4), %xmm0 
     movss (%rsi, %rcx, 4), %xmm1
     addss %xmm0, %xmm1
     # guarda el resultado en "a"
