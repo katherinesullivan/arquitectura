@@ -12,7 +12,8 @@ main:
     movq $b, %rsi
     movq len, %rdx
     incq %rdx
-    call sum
+    xorq %rcx, %rcx
+    call sum_simd
     ret
 
     
@@ -23,20 +24,18 @@ sum_simd:
     cmpq $4, %rdx
     jle sum
 
-    mull $16, j
-
     # copia 4 floats de "a" a xmm0
-    movaps j(%rdi), %xmm0
+    movaps (%rdi, %rcx, 1), %xmm0
     # copia 4 floats de "b" a xmm1
-    movaps j(%rsi), %xmm1
+    movaps (%rsi, %rcx, 1), %xmm1
     # suma los 4 floats a la vez
     addps %xmm0, %xmm1
     # guarda el resultado en "a"
-    movaps %xmm1, j(%rdi)
+    movaps %xmm1, (%rdi, %rcx, 1)
     
-    incq j
+    addq $16, %rcx
     subq $4, %rdx
-    jz retorno
+    # jz retorno
     jmp sum_simd
 
 
@@ -44,12 +43,12 @@ sum:
     decq %rdx
     jz retorno
 
-    movss (%rdi, i, 4), %xmm0 # esta en el apunte3 (con funciones packed) pero o sea deberia funcar y no lo hace
-    movss (%rsi, i, 4), %xmm1
+    movss (%rdi, %rcx, 4), %xmm0 # esta en el apunte3 (con funciones packed) pero o sea deberia funcar y no lo hace
+    movss (%rsi, %rcx, 4), %xmm1
     addss %xmm0, %xmm1
 
-    movss %xmm1, (%rdi, i, 4)
-    incl i
+    incq %rcx
+    movss %xmm1, (%rdi, %rcx, 4)
     jmp sum
 
 
