@@ -11,7 +11,7 @@ int myisnan(float f) {
 }
 
 int myisnan2(float f) {
-    return !(f == f); // Si f es NaN va a dar falso porque comparar con NaN siempre da falso.
+    return !(f == f); // Si f es NaN la comparación de igualdad va a dar falso porque comparar con NaN siempre da falso.
 }
 
 int main(void) {
@@ -21,7 +21,7 @@ int main(void) {
     printf("f: %f\n", f);
 
     // NaN
-    if (f == NAN) printf("Es NAN.\n"); // Comparar con NAN siempre da falso
+    if (f == NAN) printf("Es NAN.\n"); // Comparar con NAN siempre da falso.
     if (isnan(f)) printf("isnan dice que si.\n");
     if (myisnan(f)) printf("myisnan dice que si.\n");
     if (myisnan2(f)) printf("myisnan2 dice que si.\n");
