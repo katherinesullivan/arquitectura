@@ -8,6 +8,6 @@
 int main() {
     float f = 3.14;
     printf("%x\n", EXP(f));
-    printf("%b\n", 8388607);
+    printf("%x\n", FRAC(f));
     return 0;
 }
