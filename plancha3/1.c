@@ -5,7 +5,7 @@
 #define EXP(x) ((*(int *) (&x) >> 23) & 0xff)
 #define FRAC(x) (*(int *) (&x) & 0x7fffff)
 #define SGN(x) ((*(int *) (&x) >> 31) & 0x1)
-
+//hola
 
 int main() {
     float f = -3.14;
