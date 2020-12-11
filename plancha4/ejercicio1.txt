@@ -1,0 +1,8 @@
+Para las solicitudes correctas se indica la dirección física correspondiente y para 
+las demás se especifica la excepción que se genera.
+
+1) 670
+2) excepción por instrucción ilegal
+3) 2315
+4) excepción por error de direccionamiento (segmentation fault)
+5) excepción por instrucción ilegal
