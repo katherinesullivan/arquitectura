@@ -1,0 +1,5 @@
+1) El proceso A requerirá un mínimo de 34 páginas y el proceso B requerirá un mínimo de 24 páginas.
+2) El proceso A tendrá un mínimo de 76 bytes de desperdicio por fragmentación interna y el proceso B 
+tendrá un mínimo de 4 bytes de desperdicio por fragmentación interna. Como se utiliza paginación, en 
+principio no habría desperdicio por fragmentación externa. 
+3)

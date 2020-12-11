@@ -1,0 +1,11 @@
+Desde la versión ARMv6T2 de la arquitectura ARM en adelante, se incluyó una pseudo-intrucción ldr
+que permite cargar en un registro valores inmediatos de 32 bits o la dirección de una etiqueta 
+(32 bits) en una única instrucción. 
+Ejemplos de uso de esta instrucción son:
+ldr r1, =0x12abcdef 
+ldr r1, =etiqueta
+Esta instrucción logra cargar un valor de 32 bits porque coloca dicha constante en una 'literal pool' 
+y luego genera una instrucción ldr PC-relative que carga el valor de la literal pool.
+Las literal pools son una seccción de memoria reservada para guardar valores literales (constantes) 
+de la sección de código. PC-relative se refiere a que la dirección se encuenta en un offset del PC 
+(programm counter).
