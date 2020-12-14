@@ -5,7 +5,7 @@ principio no habría desperdicio por fragmentación externa.
 3) Suponiendo que se usa una tabla de paginación de un sólo nivel, tendríamos:
 - Direcciones virtuales de 16 bits
 - Cada entrada de la tabla es de 8 bits (asumimos que el enunciado quiso decir 8 bits en lugar de 8 bytes)
-- Direcciones virtuales de 16 bits
+- Direcciones físicas de 16 bits
 Por lo tanto, los 8 bits menos significativos son el desplazamiento.
 Luego, con 8 bits para representar la página tenemos 2^8 valores posibles, 
 es decir que la tabla de paginación tendría un tamaño de 2^8 = 256
