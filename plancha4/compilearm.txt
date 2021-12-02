@@ -1,0 +1,11 @@
+Compilo y pongo a correr el ejecutable
+
+arm-linux-gnueabi(hf)-gcc ejercicio4.s -o ej4 -g -static     (si pto flotante)
+
+qemu-arm -g 1234 ./ej4                   (puerto > 1000)
+
+En otra term nos conectamos a ese puerto con el gdb-multiarch para debuggear:
+
+gdb-multiarch ./ej4 
+
+> target remote localhost:1234
